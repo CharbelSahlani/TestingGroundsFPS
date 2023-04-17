@@ -62,6 +62,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	UAnimMontage* FireAnimation;
 
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	TSubclassOf<class AGun> GunBlueprint;
+
+private:
+	AGun* Gun;
 
 protected:
 
