@@ -10,36 +10,37 @@ UCLASS()
 class TESTINGGROUNDSFPS_API AGun : public AActor
 {
 	GENERATED_BODY()
-	
-	/** Gun mesh: 1st person view (seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	USkeletalMeshComponent* FP_Gun;
+
+		/** Gun mesh: 1st person view (seen only by self) */
+		UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* FP_Gun;
 
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	USceneComponent* FP_MuzzleLocation;
+		USceneComponent* FP_MuzzleLocation;
 
 	/** Gun mesh: VR view (attached to the VR controller directly, no arm, just the actual gun) */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	USkeletalMeshComponent* VR_Gun;
+		USkeletalMeshComponent* VR_Gun;
 
 	/** Location on VR gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	USceneComponent* VR_MuzzleLocation;
+		USceneComponent* VR_MuzzleLocation;
 
-public:	
+public:
 	// Sets default values for this actor's properties
 	AGun();
 
 	/** Fires a projectile. */
-	void OnFire();
+	UFUNCTION(BlueprintCallable, Category = "Input")
+		void OnFire();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -61,4 +62,5 @@ public:
 	/**  */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		UAnimInstance* AnimInstance;
+	
 };
